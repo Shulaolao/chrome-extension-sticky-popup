@@ -1,0 +1,46 @@
+{
+  "name": "Sticky Float",
+  "description": "Sticky Float",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+B",
+        "mac": "Command+B"
+      }
+    }
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": [
+        "https://developer.chrome.com/docs/extensions/*",
+        "https://developer.chrome.com/docs/webstore/*",
+        "https://www.google.com/*",
+        "https://www.ogcloud.com/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_title": "Sticky Float Popup",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "images/spyder.png",
+      "32": "images/spyder.png",
+      "48": "images/spyder.png",
+      "128": "images/spyder.png"
+    }
+  },
+  "options_page": "options/options.html",
+  "icons": {
+    "16": "images/spyder.png",
+    "32": "images/spyder.png",
+    "48": "images/spyder.png",
+    "128": "images/spyder.png"
+  }
+}

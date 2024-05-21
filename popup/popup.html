@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *;script-src * 'unsafe-inline'">
+  <title>Sticky Float</title>
+  <style>
+    .switch {
+      display: block;
+      width: 60px;
+      height: 50px;
+    }
+    
+    .checkbox {
+      display: none;
+    }
+    
+    label {
+      display: block;
+    }
+
+    .slider {
+      width: 60px;
+      height: 30px;
+      background-color: lightgray;
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      border: 4px solid transparent;
+      transition: .3s;
+      box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.25) inset;
+      cursor: pointer;
+    }
+
+    .slider::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      transform: translateX(-30px);
+      border-radius: 20px;
+      transition: .3s;
+      box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.25);
+    }
+
+    .checkbox:checked ~ .slider::before {
+      transform: translateX(30px);
+      box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.25);
+    }
+
+    .checkbox:checked ~ .slider {
+      background-color: #2196F3;
+    }
+
+    .checkbox:active ~ .slider::before {
+      transform: translate(0);
+    }
+    
+    .checkbox:checked ~ svg {
+      fill: #1296db;
+      transform: scale(1.2);
+      transition: transform ease-in-out .28s;
+    }
+    
+    .sticky {
+      width: 40px;
+      height: 40px;
+      fill: #8a8a8a;
+    }
+    svg {
+      width: 36px;
+      height: 36px;
+      color: inherit;
+      fill: inherit;
+    }
+  </style>
+</head>
+<body>  
+  <h1>Sticky Float</h1>
+  <h4>Toggle Show Tab By Switch</h4>
+  <label class="switch">
+    <input type="checkbox" class="checkbox switch-checkbox" />
+      <div class="slider"></div>
+  </label>
+  <h4>Toggle Sticky</h4>
+  <label class="sticky">
+    <input type="checkbox" class="checkbox sticky-checkbox" />
+    <svg t="1715845322212" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1783" width="200" height="200"><path d="M760.9344 628.5312a19.2 19.2 0 0 1 5.2224 22.9888 24.3712 24.3712 0 0 1-22.3232 13.0048h-190.976l-12.3392 188.8256-55.9104-0.1024-9.216-188.7232H280.2176c-9.7792 0-18.5856-5.12-22.3232-13.0048a19.2 19.2 0 0 1 5.2224-23.04l103.5264-90.4704v-172.544h-47.4112c-13.312 0-24.1152-9.4208-24.1152-21.0944V260.096c0-11.6736 10.752-21.0944 24.064-21.0944h385.3824c13.312 0 24.064 9.4208 24.064 21.0944v84.3264c0 11.6736-10.752 21.0944-24.064 21.0944h-47.104v172.544l103.5264 90.5216z"  p-id="1784"></path></svg>
+  </label>
+  <img src="../images/spyder.png" alt="spyder">
+  <script src="popup.js"></script>
+  </script>
+</body>
+</html>
+
