@@ -1,6 +1,6 @@
 // 建立长连接
-const port = chrome.runtime.connect({ name: "shulao" });
-port.postMessage({ message: "connect", type: "long" });
+// const port = chrome.runtime.connect({ name: "shulao" });
+// port.postMessage({ message: "connect", type: "long" });
 // 长连接监听
 // chrome.runtime.onConnect.addListener((port) => {
 //   port.name === "shulao" &&
@@ -37,22 +37,22 @@ port.postMessage({ message: "connect", type: "long" });
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   // 异步 sendResponse
   /* function getResponse(request, sender, sendResponse) {
-    new Promise((resolve) => {
-      setTimeout(() => {
-        console.log(111);
-        resolve();
-      }, 1000);
-    }).then(() => {
-      sendResponse({
-        message: "success",
-        type: "shot",
-        t: new Date().getTime(),
+      new Promise((resolve) => {
+        setTimeout(() => {
+          console.log(111);
+          resolve();
+        }, 1000);
+      }).then(() => {
+        sendResponse({
+          message: "success",
+          type: "shot",
+          t: new Date().getTime(),
+        });
       });
-    });
-  }
-
-  getResponse(request, sender, sendResponse);
-  return true; */
+    }
+  
+    getResponse(request, sender, sendResponse);
+    return true; */
 
   const callback = () => {
     sendResponse({
@@ -235,4 +235,5 @@ class Popup {
   }
 }
 
-const popup = new Popup();
+// 输入你想要弹出来的网页地址
+const popup = new Popup("https://developer.chrome.com/docs/extensions/how-to");

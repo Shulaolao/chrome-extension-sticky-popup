@@ -13,6 +13,7 @@ const input = new Proxy(target, {
     return target[prop];
   },
 });
+
 // 为扩展 popup 添加点击事件
 document.addEventListener("DOMContentLoaded", () => {
   input.visible =
@@ -135,14 +136,15 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     });
   });
-});
-// 监听浮窗的显示隐藏、固定与否
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.message === "visible" || request.message === "sticky") {
-    input[request.message] = request.value;
-  }
-  sendResponse({
-    message: "success",
+
+  // 监听浮窗的显示隐藏、固定与否
+  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.message === "visible" || request.message === "sticky") {
+      input[request.message] = request.value;
+    }
+    sendResponse({
+      message: "success",
+    });
   });
 });
 
